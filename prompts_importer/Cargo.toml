@@ -1,0 +1,9 @@
+[package]
+name = "prompts_importer"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]
+dotenvy = "0.15.7"
+env = "1.0.1"
+postgres = "0.19.13"
