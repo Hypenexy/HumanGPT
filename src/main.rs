@@ -15,7 +15,7 @@ use dotenv::dotenv;
 #[derive(sqlx::FromRow, Serialize)]
 pub struct Prompt {
     pub id: i32,
-    pub prompt: String,
+    pub value: String,
 }
 
 async fn connect_db() -> sqlx::PgPool {
@@ -33,13 +33,13 @@ async fn connect_db() -> sqlx::PgPool {
 
 async fn get_prompt(Extension(pool): Extension<sqlx::PgPool>) -> impl IntoResponse {
     let prompt = sqlx::query_as::<_, Prompt>(
-        "SELECT id, prompt FROM prompts ORDER BY random() LIMIT 1",
+        "SELECT id, value FROM prompts ORDER BY random() LIMIT 1",
     )
     .fetch_one(&pool)
     .await;
 
     match prompt {
-        Ok(prompt) => Json(prompt).into_response(),
+        Ok(value) => Json(value).into_response(),
         Err(err) => {
             eprintln!("Failed to fetch prompt: {err}");
             StatusCode::INTERNAL_SERVER_ERROR.into_response()

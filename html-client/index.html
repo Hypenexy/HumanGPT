@@ -7,7 +7,25 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <h1>chat</h1>
+    <div class="chat-app">
+        <header class="chat-header">
+            <h1>HumanGPT</h1>
+            <p>Viewing chat from the AI perspective. Fetch the latest prompt and reply with your observation.</p>
+        </header>
+
+        <div class="chat-window">
+            <div class="messages" id="messages"></div>
+        </div>
+
+        <div class="controls">
+            <button id="fetchPrompt">Fetch Prompt</button>
+            <form id="replyForm">
+                <textarea id="response" rows="3" placeholder="Type your response here..."></textarea>
+                <button type="submit">Send Response</button>
+            </form>
+        </div>
+    </div>
+
     <script src="script.js"></script>
 </body>
 </html>
