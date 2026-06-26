@@ -7,10 +7,11 @@
   "type": "commonjs",
   "main": "script.js",
   "scripts": {
+    "prepare:dist": "node -e \"require('fs').mkdirSync('../dist', { recursive: true })\"",
     "build:html": "html-minifier-terser --collapse-whitespace --remove-comments --minify-css true --minify-js true index.html -o ../dist/index.html",
     "build:css": "cleancss -o ../dist/style.css style.css",
     "build:js": "terser script.js -c -m -o ../dist/script.js",
-    "build": "npm run build:html && npm run build:css && npm run build:js"
+    "build": "npm run prepare:dist && npm run build:html && npm run build:css && npm run build:js"
   },
   "devDependencies": {
     "clean-css-cli": "^5.6.3",
